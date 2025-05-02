@@ -14,3 +14,7 @@
 
 # environments
 .env
+
+# nodemodules
+node_modules/
+node_modules/*
