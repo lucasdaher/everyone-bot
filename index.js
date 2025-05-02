@@ -16,7 +16,12 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", async (message) => {
-  if (message.channel.id === TARGET_CHANNEL_ID && !message.author.bot) {
+  if (message.channel.id !== TARGET_CHANNEL_ID) return;
+
+  const isFromWebhook = !!message.webhookId;
+  const isFromUser = !message.author.bot;
+
+  if (isFromUser || isFromWebhook) {
     try {
       await message.channel.send("@everyone");
     } catch (error) {
